@@ -2,6 +2,7 @@
 name = "mogbox-core"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 [dependencies]
 symphonia = "0.5"
