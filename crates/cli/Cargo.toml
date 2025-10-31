@@ -1,0 +1,14 @@
+[package]
+name = "mogbox-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "mogbox"
+path = "src/main.rs"
+
+[dependencies]
+mogbox-io = { path = "../io" }
+mogbox-engine = { path = "../engine" }
+mogbox-runtime = { path = "../runtime" }

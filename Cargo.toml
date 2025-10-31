@@ -1,9 +1,19 @@
-[package]
-name = "mogbox-core"
+[workspace]
+members = ["crates/io", "crates/engine", "crates/runtime", "crates/cli"]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 license = "MIT"
 
-[dependencies]
+[workspace.dependencies]
 symphonia = "0.5"
 cpal = "0.13"
+
+[workspace.lints.rust]
+unsafe_code = "warn"
+
+[profile.release]
+lto = true
+codegen-units = 1

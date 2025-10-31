@@ -437,11 +437,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
 
 [[package]]
-name = "mogbox-core"
+name = "mogbox-cli"
+version = "0.1.0"
+dependencies = [
+ "mogbox-engine",
+ "mogbox-io",
+ "mogbox-runtime",
+]
+
+[[package]]
+name = "mogbox-engine"
+version = "0.1.0"
+
+[[package]]
+name = "mogbox-io"
+version = "0.1.0"
+dependencies = [
+ "symphonia",
+]
+
+[[package]]
+name = "mogbox-runtime"
 version = "0.1.0"
 dependencies = [
  "cpal",
- "symphonia",
 ]
 
 [[package]]
@@ -755,6 +774,7 @@ checksum = "5773a4c030a19d9bfaa090f49746ff35c75dfddfa700df7a5939d5e076a57039"
 dependencies = [
  "lazy_static",
  "symphonia-bundle-flac",
+ "symphonia-bundle-mp3",
  "symphonia-codec-adpcm",
  "symphonia-codec-pcm",
  "symphonia-codec-vorbis",
@@ -775,6 +795,18 @@ dependencies = [
  "symphonia-core",
  "symphonia-metadata",
  "symphonia-utils-xiph",
+]
+
+[[package]]
+name = "symphonia-bundle-mp3"
+version = "0.5.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4872dd6bb56bf5eac799e3e957aa1981086c3e613b27e0ac23b176054f7c57ed"
+dependencies = [
+ "lazy_static",
+ "log",
+ "symphonia-core",
+ "symphonia-metadata",
 ]
 
 [[package]]

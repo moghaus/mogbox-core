@@ -1,0 +1,13 @@
+[package]
+name = "mogbox-io"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+symphonia = { workspace = true, features = ["wav", "mp3"] }
+
+[features]
+default = ["wav", "mp3"]
+wav = ["symphonia/wav"]
+mp3 = ["symphonia/mp3"]
