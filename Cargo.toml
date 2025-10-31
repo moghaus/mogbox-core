@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 symphonia = "0.5"
+cpal = "0.13"
