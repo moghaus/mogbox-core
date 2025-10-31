@@ -1,14 +1,44 @@
-use clap::Parser;
+use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-struct CmdArg {
-    // Which operation to perform on the file
-    cmd: String,
-    // The path to the file we want to operate on
-    path: std::path::PathBuf,
+#[command(name = "MogBox")]
+struct Cli {
+    #[command(subcommand)]
+    command: Commands,
+}
+
+#[derive(Subcommand, Debug)]
+enum Commands {
+    // Print info and metadata for an audio file
+    Info {
+        #[arg(value_name = "PATH")]
+        path: std::path::PathBuf,
+    },
 }
 
 fn main() {
-    let args = CmdArg::parse();
-    println!("Command: {:?} File Path: {:?}", args.cmd, args.path)
+    let args: Cli = Cli::parse();
+    print_intro(&args);
+
+    match args.command {
+        Commands::Info { path } => handle_info(path),
+    }
+}
+
+// Command Handlers
+fn handle_info(path: std::path::PathBuf) {
+    print_read_file(path);
+}
+
+// Display Utils
+fn print_intro(args: &Cli) {
+    println!("==================");
+    println!("<<< MogBox CLI >>>");
+    println!("==================\n");
+
+    println!("Command: {:?}", args.command);
+}
+
+fn print_read_file(path: std::path::PathBuf) {
+    println!("Reading File: {:?}", path)
 }
