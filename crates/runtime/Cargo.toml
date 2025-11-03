@@ -6,3 +6,5 @@ license.workspace = true
 
 [dependencies]
 cpal = { workspace = true }
+symphonia = { workspace = true }
+mogbox-io = { path = "../io" }

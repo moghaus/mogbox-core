@@ -570,6 +570,8 @@ name = "mogbox-runtime"
 version = "0.1.0"
 dependencies = [
  "cpal",
+ "mogbox-io",
+ "symphonia",
 ]
 
 [[package]]
