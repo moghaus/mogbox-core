@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use mogbox_io::AudioFile;
 
 #[derive(Parser)]
 #[command(name = "MogBox")]
@@ -27,7 +28,18 @@ fn main() {
 
 // Command Handlers
 fn handle_info(path: std::path::PathBuf) {
-    print_read_file(path);
+    print_read_file(&path);
+
+    match AudioFile::open(&path) {
+        Ok(audio_file) => {
+            println!("Sample Rate: {} Hz", audio_file.sample_rate);
+            println!("Channels: {}", audio_file.channels);
+            println!("Track ID: {}", audio_file.track_id);
+        }
+        Err(e) => {
+            eprintln!("Error opening audio file: {}", e);
+        }
+    }
 }
 
 // Display Utils
@@ -39,6 +51,6 @@ fn print_intro(args: &Cli) {
     println!("Command: {:?}", args.command);
 }
 
-fn print_read_file(path: std::path::PathBuf) {
+fn print_read_file(path: &std::path::PathBuf) {
     println!("Reading File: {:?}", path)
 }
