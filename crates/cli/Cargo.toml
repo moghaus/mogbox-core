@@ -9,6 +9,7 @@ name = "mogbox"
 path = "src/main.rs"
 
 [dependencies]
+clap = { version = "4.4", features = ["derive"] }
 mogbox-io = { path = "../io" }
 mogbox-engine = { path = "../engine" }
 mogbox-runtime = { path = "../runtime" }
